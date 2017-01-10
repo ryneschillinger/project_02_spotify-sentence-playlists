@@ -44,10 +44,6 @@ textarea {
 	padding: .5em;
 }
 
-textarea:focus {
-	outline: 4px solid red;
-}
-
 input[type=submit] {
 	margin: 1em 0;
 	background-color: #1DB954;
