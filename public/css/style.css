@@ -1,0 +1,82 @@
+/*** GLOBAL STYLES ***/
+
+body {
+	font-size: 62.5%; 
+	font-family: 'Raleway', sans-serif;
+}
+
+h1 {
+	font-size: 3.2em;
+	font-weight: 700;
+}
+
+h4 {
+	font-size: 2em;
+}
+
+p {
+	font-size: 1.4em;
+	font-weight: 500;
+}
+
+.btn {
+	font-family: 'Raleway', sans-serif;
+	font-size: 1.8em;
+	font-weight: 600;
+	letter-spacing: .04em;
+	padding: .7em .9em;
+	border-radius: 3em;
+}
+
+
+/*** FORM STYLES ***/
+
+.form-group {
+	width: 40%;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+textarea {
+	border: .1em solid #aaa;
+	border-radius: .4em;
+	padding: .5em;
+}
+
+textarea:focus {
+	outline: 4px solid red;
+}
+
+input[type=submit] {
+	margin: 1em 0;
+	background-color: #1DB954;
+	color: white;
+}
+
+
+/*** PLAYLIST SEARCH RESULTS STYLES ***/
+
+#search-results h1 {
+	margin-bottom: .15em;
+}
+
+.track {
+	width: 100%;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	margin-top: .8em;
+}
+
+.track-details {
+	margin-left: 1.2em;
+}
+
+.track-details h4 {
+	margin: .35em 0 0 0;
+}
+
+.track-details p {
+	margin: .4em 0 .65em 0;
+}
