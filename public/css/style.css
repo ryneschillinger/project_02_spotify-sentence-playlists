@@ -3,20 +3,45 @@
 body {
 	font-size: 62.5%; 
 	font-family: 'Raleway', sans-serif;
+	color: #333333;
+	display: flex;
+	justify-content: center;
+}
+
+main {
+	width: 960px;
+	max-width: 90%;
+	display: flex;
+	justify-content: center;
+}
+
+.container {
+	padding: .2em 3em;
 }
 
 h1 {
-	font-size: 3.2em;
+	font-size: 3em;
 	font-weight: 700;
 }
 
+h2 {
+	font-size: 2.4em;
+	font-weight: 700;
+}
+
+
 h4 {
-	font-size: 2em;
+	font-size: 1.8em;
 }
 
 p {
-	font-size: 1.4em;
-	font-weight: 500;
+	font-size: 1.5em;
+	font-weight: 600;
+}
+
+a {
+	text-decoration: none;
+	color: #3c69f0;
 }
 
 .btn {
@@ -24,12 +49,30 @@ p {
 	font-size: 1.8em;
 	font-weight: 600;
 	letter-spacing: .04em;
-	padding: .7em .9em;
+	padding: .7em 1em .77em 1em;
 	border-radius: 3em;
+	margin: 1.6em 0 1.8em 0;
+	cursor: pointer;
+}
+
+.btn-primary {
+	background-color: #1DB954;
+	color: white;
+}
+
+.btn-secondary {
+	background-color: black;
+	color: white;
 }
 
 
-/*** FORM STYLES ***/
+
+/*** SEARCH FORM STYLES ***/
+
+#search-container {
+	width: 50%;
+	background-color: #aaa;
+}
 
 .form-group {
 	width: 40%;
@@ -40,18 +83,25 @@ p {
 
 textarea {
 	border: .1em solid #aaa;
-	border-radius: .4em;
+	border-radius: .3em;
 	padding: .5em;
+	font-family: 'Raleway', sans-serif;
+	font-size: 1.5em;
+	font-weight: 500;
+	background-color: white;
+	width: 240%;
+	height: 5em;
+	margin-top: .2em;
 }
-
-input[type=submit] {
-	margin: 1em 0;
-	background-color: #1DB954;
-	color: white;
-}
-
 
 /*** PLAYLIST SEARCH RESULTS STYLES ***/
+
+#search-results {
+	width: 50%;
+	background-color: #ddd;
+	display: flex;
+	flex-direction: column;
+}
 
 #search-results h1 {
 	margin-bottom: .15em;
@@ -61,8 +111,8 @@ input[type=submit] {
 	width: 100%;
 	display: flex;
 	justify-content: flex-start;
-	align-items: center;
-	margin-top: .8em;
+	align-items: flex-start;
+	margin: 1.8em 0;
 }
 
 .track-details {
@@ -70,9 +120,13 @@ input[type=submit] {
 }
 
 .track-details h4 {
-	margin: .35em 0 0 0;
+	margin: -.25em 0 .4em 0;
 }
 
 .track-details p {
-	margin: .4em 0 .65em 0;
+	margin: .4em 0 .5em 0;
+}
+
+#error {
+	margin: -1.3em 0 0 0;
 }

@@ -1,29 +1,37 @@
-<div id ="search-container">
+<div class="container" id ="search-container">
 	<h1>Type your text here</h1>
 	<form class="form" method="post" action="/" id="search-form">
 		<div class="form-group">
-			<textarea cols="60" rows="8" class="form-control" name="sentence" id="sentence" placeholder="Type your text here"></textarea>
-			<input type="submit" class="btn btn-submit" value="Create Playlist">
+			<textarea class="form-control" name="sentence" id="sentence" placeholder="Type your text here">hello world</textarea>
+			<input type="submit" class="btn btn-primary" value="Create Playlist">
 		</div>
 	</form>
 </div>
 
-<div id="search-results">
+<div class="container" id="search-results">
 	<h1>Matching Tracks</h1>
-	<div id="tracks"></div>
+	<div id="tracks">
+		<div class="track">
+			<a href="https://open.spotify.com/track/0ENSn4fwAbCGeFGVUbXEU3"><img src="https://i.scdn.co/image/220fe5804f244f41aa216c4e3de17eafbf552341"></a>
+			<div class="track-details">
+			  <h4><a href="https://open.spotify.com/track/0ENSn4fwAbCGeFGVUbXEU3">Hello</a></h4>
+			  <p>Artist: <a href="https://open.spotify.com/artist/4dpARuHxo51G3z768sgnrY">Adele</a></p>
+			  <p>Album: <a href="https://open.spotify.com/album/1Eo1pg2D4beFgf3HFTJTMc">25</a></p>
+			</div>
+		</div>
+		<div class="track">
+			<a href="https://open.spotify.com/track/6qwGBEapykrbAHTYlYwONN"><img src="https://i.scdn.co/image/1b1fda66071bd81463405ceeecf8e6b9528568b0"></a>
+			<div class="track-details">
+			  <h4><a href="https://open.spotify.com/track/6qwGBEapykrbAHTYlYwONN">Cole World</a></h4>
+			  <p>Artist: <a href="https://open.spotify.com/artist/6l3HvQ5sa6mXTsMTB19rO5">J. Cole</a></p>
+			  <p>Album: <a href="">Cole World: The Sideline Story</a></p>
+			</div>
+		</div>
+	</div>
 	<p id="error"></p>
 	<form class="form" method="post" action="/" id="add-playlist">
 		<div class="form-group">
-			<input type="submit" class="btn btn-submit" value="Add to Your Playlists">
+			<input type="submit" class="btn btn-secondary" value="Add to Your Playlists">
 		</div>
 	</form>
 </div>
-
-<!-- <div class='track'>
-  <img src="https://i.scdn.co/image/a9879773b45dbe5d112d98e1fd2dc5576aeb91e5">
-  <div class='track-details'>
-    <h4>Track</h4>
-    <p>Album:</p>
-    <p>Artist:</p> 
-  </div>
-<div> -->

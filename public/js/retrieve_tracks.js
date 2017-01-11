@@ -3,9 +3,20 @@ $(document).ready(function() {
   $('#search-form').submit(function(event) {
     event.preventDefault();
 
+    // Maximum length of track name result
+    maxLength = 15;
+
+    // Remove previous search results and reset counts
+    $('#tracks').empty();
+    $('#error').empty();
+    var resultJSON = '';
+    var wordIndex = 0;
+
+
     // Get submission and separate the words
     var searchTerm = $('#sentence').val();
     searchTermSplit = searchTerm.split(" ");
+
 
     // Remove empty spaces from sentence array
     for (var i = searchTermSplit.length - 1; i >= 0; i--) {
@@ -18,14 +29,22 @@ $(document).ready(function() {
 
     function getTracks(arr) {
       for (var i=0; i<arr.length; i++) {
-        var resultJSON = 'https://api.spotify.com/v1/search?type=track&limit=50&q=' + encodeURIComponent('track:"' + arr[i] + '"');
-        addTracks(resultJSON, arr[i]);
+
+        // Get track JSON for word
+        resultJSON = 'https://api.spotify.com/v1/search?type=track&limit=50&q=' + encodeURIComponent('track:"' + arr[i] + '"');
+
+        $('#tracks').append(
+          "<div class='track' id='track" + i + "'></div>"
+        );
+
+        addTrack(resultJSON, arr[i]);
+
       }
     }
 
     // Collect track info and append it to results list
 
-    function addTracks(url, word) {
+    function addTrack(url, word) {
 
       $.getJSON(url, function(json) {
 
@@ -46,15 +65,15 @@ $(document).ready(function() {
 
         var track = json.tracks.items[ran].name;
 
-        while (track.length > 15) {
+        while (track.length > maxLength) {
           // Ignore empty results
           if (!track) {
             break;
           }
           // If track name is longer than 20 characters, look for shorter one
-          else if (track.length > 15) {
+          else if (track.length > maxLength) {
             for (var i = 0; i < numResults; i++) {
-              if (allResults[i].length < 15) {
+              if (allResults[i].length < maxLength) {
                 track = allResults[i];
                 break;
               }
@@ -73,25 +92,31 @@ $(document).ready(function() {
           }
         }
 
+        var trackLink = json.tracks.items[ran].external_urls.spotify;
         var artist = json.tracks.items[ran].artists[0].name;
+        var artistLink = json.tracks.items[ran].artists[0].external_urls.spotify;
         var album = json.tracks.items[ran].album.name;
+        var albumLink = json.tracks.items[ran].album.external_urls.spotify;
         var cover = json.tracks.items[ran].album.images[2].url;
 
         // Add track info to results
-        $('#tracks').append(
-          "<div class='track'>" +
-            "<img src='" + cover + "' alt='" + album + "'>" +
-            "<div class='track-details'>" +
-              '<h4>' + track + '</h4>' +
-              '<p>Album: ' + album + '</p>' +
-              '<p>Artist: ' + artist + '</p>' +
-            '</div>' +
-          '<div>'
+        $('#track' + wordIndex).append(
+          "<a href='" + trackLink + "'>" + "<img src='" + cover + "' alt='" + album + "'></a>" +
+          "<div class='track-details'>" +
+            "<h4><a href='" + trackLink + "'>" + track + '</a></h4>' +
+            '<p>Artist: ' + "<a href='" + artistLink + "'>" + artist + '</a></p>' +
+            '<p>Album: ' + "<a href='" + albumLink + "'>" + album + '</a></p>' +
+          '</div>'
         );
 
-      });
-    }
+        // Move on to the next word in results
+        wordIndex++;
 
+      });
+    } // End of addTrack function
+
+
+    // Call main function using the sentence array
     getTracks(searchTermSplit);
 
   });
