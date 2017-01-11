@@ -99,6 +99,11 @@ $(document).ready(function() {
         var albumLink = json.tracks.items[ran].album.external_urls.spotify;
         var cover = json.tracks.items[ran].album.images[2].url;
 
+        // Change background image to match album cover
+        if (word == searchTermSplit[0]) {
+          $('.background-image').css({"background": "url('" + cover + "')", "background-size": "100%", "background-position": "center"});
+        }
+
         // Add track info to results
         $('#track' + wordIndex).append(
           "<a href='" + trackLink + "'>" + "<img src='" + cover + "' alt='" + album + "'></a>" +
