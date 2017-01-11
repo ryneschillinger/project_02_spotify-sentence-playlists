@@ -3,10 +3,11 @@
 body {
 	font-size: 62.5%; 
 	font-family: 'Raleway', sans-serif;
-	color: #333333;
+	color: #191419;
 	display: flex;
 	justify-content: center;
-	overflow: hidden;
+	overflow-x: hidden;
+	overflow-y: scroll;
 }
 
 .background-image {
@@ -23,33 +24,43 @@ body {
 	top: 0;
 }
 
-main {
+.main-container {
 	width: 960px;
 	max-width: 90%;
 	display: flex;
 	justify-content: center;
 	box-shadow: 0 .7em 9em rgba(0,0,0,.2);
-	margin-top: 5%;
+	margin: 10% 0;
 }
 
 .container {
 	padding: .2em 3em;
+	overflow: auto;
 }
 
 h1 {
-	font-size: 3em;
+	font-size: 3.2em;
 	font-weight: 700;
 	transform: translateX(-.08em);
+	letter-spacing: .03em;
 }
 
 h2 {
-	font-size: 2.4em;
+	font-size: 2.6em;
 	font-weight: 700;
+	padding: 0;
+}
+
+h3 {
+	font-size: 2.2em;
+	font-weight: 700;
+	padding: 0;
 }
 
 
 h4 {
 	font-size: 1.8em;
+	font-weight: 700;
 }
 
 p {
@@ -68,23 +79,39 @@ a:hover {
 	color: #1bcf5a;
 }
 
+hr {
+  border: 0;
+  clear: both;
+  display: block;
+  width: 100%;               
+  background-color: #e3e8e0;
+  height: 1px;
+  margin: .5em 0 2em 0;
+}
+
+.uppercase {
+	text-transform: uppercase;
+	letter-spacing: .3em;
+}
+
 .btn {
 	font-family: 'Raleway', sans-serif;
-	font-size: 1.6em;
+	font-size: 1.4em;
 	font-weight: 700;
-	letter-spacing: .04em;
-	padding: .6em .9em .67em .9em;
+	letter-spacing: .15em;
+	text-transform: uppercase;
+	padding: .7em 1.1em .8em 1.1em;
 	border-radius: 3em;
-	margin: 1.6em 0 1.8em 0;
+	margin: 1.8em 0 2em 0;
 	transform: translateX(-.1em);
 	cursor: pointer;
 }
 
 .btn-primary {
 	background-color: #1DB954;
-	border-top: .05em solid #49ce78;
+	border-top: .05em solid #65eb95;
 	border-bottom: .05em solid #059136;
-	box-shadow: 0 .05em .1em #059136;
+	box-shadow: 0 .05em .2em #666;
 	color: white;
 	transition-property: background-color;
 	transition-duration: 200ms;
@@ -98,14 +125,66 @@ a:hover {
 	background-color: #F2F2ED;
 	border-top: .05em solid white;
 	border-bottom: .05em solid #D5D5D1;
-	box-shadow: 0 .05em .1em #D5D5D1;
-	color: #1DB954;
+	box-shadow: 0 .04em .35em #bbb;
+	color: #191419;
 	transition-property: background-color;
 	transition-duration: 200ms;
 }
 
 .btn-secondary:hover {
 	background-color: #e8ebe2;
+}
+
+/*** NAV BAR STYLES ***/
+
+nav {
+	background-color: #191419;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	padding: 0;
+	color: white;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+#site-logo {
+	margin: 0 2.5%;
+}
+
+#nav-links {
+	margin-right: 2.5%;
+}
+
+#nav-links a {
+	color: #d3d3c7;
+	transition-property: color;
+	transition-duration: 200ms;
+}
+
+#nav-links p {
+	display: inline-block;
+	margin-left: 4em;
+	font-size: 1.3em;
+	font-weight: 500;
+}
+
+#nav-links a:hover {
+	color: white;
+}
+
+#nav-links i {
+	color: #1DB954;
+}
+
+p#logout {
+	font-size: 1.4em;
+	letter-spacing: .1em;
+}
+
+.fa-i-cursor {
+	font-weight: 900;
 }
 
 
@@ -132,8 +211,13 @@ textarea {
 	font-weight: 500;
 	background-color: white;
 	width: 240%;
-	height: 10em;
+	height: 11.6em;
 	margin-top: .2em;
+	margin-bottom: .5em;
+}
+
+textarea:focus {
+	outline: 1px solid #1DB954;
 }
 
 /*** PLAYLIST SEARCH RESULTS STYLES ***/
@@ -149,12 +233,29 @@ textarea {
 	margin-bottom: .15em;
 }
 
+#search-results i {
+	margin-right: .3em;
+}
+
+#playlist-header {
+	margin-top: 1.9em;
+	font-weight: 800;
+}
+
+#playlist-name {
+	text-transform: capitalize;
+}
+
 .track {
 	width: 100%;
 	display: flex;
 	justify-content: flex-start;
 	align-items: flex-start;
-	margin: 1.8em 0;
+	margin: .9em 0 2em 0;
+}
+
+.track img {
+	margin-right: .3em;
 }
 
 .track-details {
@@ -171,4 +272,29 @@ textarea {
 
 #error {
 	margin: -1.3em 0 0 0;
+}
+
+#btn-add-playlist {
+	margin: 1.6em 0 2.5em 0;
+}
+
+
+/*** YOUR PLAYLISTS PAGE STYLES ***/
+
+.playlists-background {
+	background: -webkit-linear-gradient(135deg,#3fa64e,#257a88,#381b50);
+	background: linear-gradient(135deg,#3fa64e,#257a88,#381b50);
+	background-size: 100%;
+	background-position: center;
+	background-repeat: no-repeat;
+	z-index: -1;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+}
+
+div.your-playlists {
+	background-color: #191419;
+	color: white;
 }

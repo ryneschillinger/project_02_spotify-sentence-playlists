@@ -25,10 +25,13 @@ $(document).ready(function() {
       }
     }
 
+    // Change title of playlist in results
+    $('#playlist-name').text(searchTerm);
+
     // For each word in submission, get track whose title matches that word
 
     function getTracks(arr) {
-      for (var i=0; i<arr.length; i++) {
+      for (var i=wordIndex; i<arr.length; i++) {
 
         // Get track JSON for word
         resultJSON = 'https://api.spotify.com/v1/search?type=track&limit=50&q=' + encodeURIComponent('track:"' + arr[i] + '"');
@@ -37,7 +40,7 @@ $(document).ready(function() {
           "<div class='track' id='track" + i + "'></div>"
         );
 
-        addTrack(resultJSON, arr[i]);
+        addTrack(resultJSON, arr[wordIndex]);
 
       }
     }
@@ -104,7 +107,11 @@ $(document).ready(function() {
           $('.background-image').css({"background": "url('" + cover + "')", "background-size": "100%", "background-position": "center"});
         }
 
+        console.log(wordIndex);
+        console.log(searchTermSplit[wordIndex]);
+
         // Add track info to results
+        $('#track' + wordIndex).empty();
         $('#track' + wordIndex).append(
           "<a href='" + trackLink + "'>" + "<img src='" + cover + "' alt='" + album + "'></a>" +
           "<div class='track-details'>" +
@@ -114,7 +121,7 @@ $(document).ready(function() {
           '</div>'
         );
 
-        // Move on to the next word in results
+        // Move on to the next word in results array
         wordIndex++;
 
       });
