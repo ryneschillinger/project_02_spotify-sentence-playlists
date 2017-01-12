@@ -23,7 +23,7 @@ app.use(express.static('public'));
 app.use(express.static('files'));
 
 app.use(session({
-  secret: process.env.SESSION_SECRET || 'supersecretpassword',
+  secret: process.env.SESSION_SECRET || 'realgsmoveinsilencelikelasagna',
   resave: false,
   saveUninitialized: true
 }));
