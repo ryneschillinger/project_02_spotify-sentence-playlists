@@ -1,18 +1,30 @@
-<form action="/auth/signup" method="POST">
-  <div class="form-group">
-    <label for="authEmail">Email</label>
-    <input id="authEmail" class="form-control" type="email" name="email">
-  </div>
+<% include partials/mosaic-bkg %>
 
-  <div class="form-group">
-    <label for="authName">Name</label>
-    <input id="authName" class="form-control" type="text" name="name">
-  </div>
+<div class="form-container">
 
-  <div class="form-group">
-    <label for="authPassword">Password</label>
-    <input id="authPassword" class="form-control" type="password" name="password">
-  </div>
+  <h1 class="form-header">
+    Sign Up
+  </h1>
 
-  <input class="btn btn-primary" type="submit">
-</form>
+  <% include partials/alerts %>
+
+  <form action="/auth/signup" method="POST">
+    <div class="form-group-login">
+      <label for="authEmail">Email</label>
+      <input id="authEmail" class="form-control" type="email" name="email">
+    </div>
+
+    <div class="form-group-login">
+      <label for="authName">Name</label>
+      <input id="authName" class="form-control" type="text" name="name">
+    </div>
+
+    <div class="form-group-login">
+      <label for="authPassword">Password</label>
+      <input id="authPassword" class="form-control" type="password" name="password">
+    </div>
+
+    <input class="btn btn-primary btn-login" type="submit">
+  </form>
+
+</div>

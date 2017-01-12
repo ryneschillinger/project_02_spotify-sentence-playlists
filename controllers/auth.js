@@ -26,7 +26,7 @@ router.post('/signup', function(req, res) {
     }
   }).catch(function(error) {
     req.flash('error', error.message);
-    res.redirect('/signup');
+    res.redirect('/auth/signup');
   });
 });
 
@@ -35,8 +35,8 @@ router.get('/login', function(req, res) {
 });
 
 router.post('/login', passport.authenticate('local', {
-  successRedirect: '/',
-  failureRedirect: '/login',
+  successRedirect: '/playlists',
+  failureRedirect: '/auth/login',
   successFlash: 'Logged In!',
   failureFlash: 'Invalid username and/or password'
 }));
