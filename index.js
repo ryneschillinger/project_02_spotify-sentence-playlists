@@ -77,6 +77,8 @@ app.delete('/playlists/:id', isLoggedIn, function(req, res){
 app.use('/auth', require('./controllers/auth'));
 
 // Heroku looks for the process.env.PORT. Otherwise, it'll fail. 
-var server = app.listen(process.env.PORT || 3000);
+var server = app.listen((process.env.PORT || 3000), function(){
+  console.log('listening on *:3000');
+});
 
 module.exports = server;
