@@ -313,7 +313,9 @@ select {
 
 #search-container {
 	width: 50%;
-	background-color: #191419;
+	background-color: #F2F2ED;
+	border-top-left-radius: 1.5em;
+	border-bottom-left-radius: 1.5em;
 }
 
 .form-group {
@@ -349,6 +351,8 @@ textarea:focus {
 	background-color: white;
 	display: flex;
 	flex-direction: column;
+	border-top-right-radius: 1.5em;
+	border-bottom-right-radius: 1.5em;
 }
 
 #search-results h1 {
