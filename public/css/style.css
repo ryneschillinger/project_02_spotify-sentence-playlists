@@ -115,6 +115,10 @@ hr {
 	cursor: pointer;
 }
 
+.btn:focus {
+	outline: none;
+}
+
 .btn-primary {
 	background-color: #1DB954;
 	border-top: .05em solid #65eb95;
