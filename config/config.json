@@ -1,6 +1,6 @@
 {
   "development": {
-    "database": "auth_development",
+    "database": "spotify_sentence_playlists",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },

@@ -15,66 +15,28 @@
 		<i class="fa fa-list-ul" aria-hidden="true"></i>
 		Your Playlists
 	</h1>
+
 	<div id="playlists">
-		<div class="playlist-container">
+
+		<% playlists.forEach(function(playlist) { %>
+
+		<div class="playlist-container" id="<%= playlist.id %>">
 			<a href="#">
 				<div class="img-container">
 					<img src="/img/list.svg" class="playlist-icon" alt="playlist">
-					<img src="/img/716943b243e865ecd71daee6ea470c5dcbe5dd78.jpeg" class="playlist-cover">
+					<img src="<%= playlist.cover %>" class="playlist-cover">
 				</div>
 			</a>
 			<h4 class="playlist-name">
-				hello world
+				<%= playlist.name %>
 			</h4>
-			<button class="btn delete-link"><i class="fa fa-times" aria-hidden="true"></i> Remove</button>  
+			<button class="btn delete-link">
+				<i class="fa fa-times" aria-hidden="true"></i> 
+				Remove
+			</button>  
 		</div>
-		<div class="playlist-container">
-			<a href="#">
-				<div class="img-container">
-					<img src="/img/list.svg" class="playlist-icon" alt="playlist">
-					<img src="/img/716943b243e865ecd71daee6ea470c5dcbe5dd78.jpeg" class="playlist-cover">
-				</div>
-			</a>
-			<h4 class="playlist-name">
-				hello world
-			</h4>
-			<button class="btn delete-link"><i class="fa fa-times" aria-hidden="true"></i> Remove</button>  
-		</div>
-		<div class="playlist-container">
-			<a href="#">
-				<div class="img-container">
-					<img src="/img/list.svg" class="playlist-icon" alt="playlist">
-					<img src="/img/716943b243e865ecd71daee6ea470c5dcbe5dd78.jpeg" class="playlist-cover">
-				</div>
-			</a>
-			<h4 class="playlist-name">
-				hello world
-			</h4>
-			<button class="btn delete-link"><i class="fa fa-times" aria-hidden="true"></i> Remove</button>  
-		</div>
-		<div class="playlist-container">
-			<a href="#">
-				<div class="img-container">
-					<img src="/img/list.svg" class="playlist-icon" alt="playlist">
-					<img src="/img/716943b243e865ecd71daee6ea470c5dcbe5dd78.jpeg" class="playlist-cover">
-				</div>
-			</a>
-			<h4 class="playlist-name">
-				hello world
-			</h4>
-			<button class="btn delete-link"><i class="fa fa-times" aria-hidden="true"></i> Remove</button>  
-		</div>
-		<div class="playlist-container">
-			<a href="#">
-				<div class="img-container">
-					<img src="/img/list.svg" class="playlist-icon" alt="playlist">
-					<img src="/img/716943b243e865ecd71daee6ea470c5dcbe5dd78.jpeg" class="playlist-cover">
-				</div>
-			</a>
-			<h4 class="playlist-name">
-				hello world
-			</h4>
-			<button class="btn delete-link"><i class="fa fa-times" aria-hidden="true"></i> Remove</button>  
-		</div>
+
+	<% }); %>
+
 	</div>
 </div>

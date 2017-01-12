@@ -20,7 +20,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(ejsLayouts);
 app.use(partials());
 app.use(express.static('public'));
-app.use(express.static('files'))
+app.use(express.static('files'));
 
 app.use(session({
   secret: process.env.SESSION_SECRET || 'supersecretpassword',
@@ -50,8 +50,28 @@ app.get('/create', isLoggedIn, function(req, res) {
   res.render('create');
 });
 
+// GET - Show list of all favorited playlists
 app.get('/playlists', isLoggedIn, function(req, res) {
-  res.render('playlists');
+  db.playlists.findAll().then(function(playlists) {
+  	res.render("playlists", {playlists: playlists});
+  });
+});
+
+// GET - Show playlist tracks
+app.get('/playlists/:id', function(req, res) {
+	// var pokemonDetails = "http://pokeapi.co/api/v2/pokemon/" + req.params.name;
+	// request(pokemonDetails, function(error, response, body) {
+	// 	var name = JSON.parse(body).name;
+	// 	res.render('pokemon-detail', {name:name, stats:stats, sprite:sprite, height:height, weight:weight, abilities:abilities, types:types,});
+	res.send("holla");
+});
+
+// DELETE - remove playlist from list of favorites
+app.delete('/playlists/:id', isLoggedIn, function(req, res){
+	db.playlists.findById(req.params.id).then(function(playlist) {
+		playlist.destroy();
+		res.send({message:"successfully deleted"});
+	});
 });
 
 app.use('/auth', require('./controllers/auth'));
