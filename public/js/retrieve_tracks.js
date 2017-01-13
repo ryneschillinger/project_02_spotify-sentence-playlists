@@ -67,6 +67,17 @@ $(document).ready(function() {
         if (!json.tracks.items[ran]) {
           var errorMessage = "No match found for the word ''" + searchTermSplit[wordIndex] + "''";
           $("#error").text(errorMessage);
+
+          //Remove item from results array
+          searchTermSplit.splice(wordIndex,1);
+          searchTerm = searchTermSplit.join(" ");
+          console.log(searchTerm);
+
+          // Change results header
+          $('#playlist-result-name').text(searchTerm);
+
+          // Change playlistname value to new searchTerm
+          html = '<input type="hidden" name="playlistname" value="' + searchTerm + '">';
         }
 
         // Return only short track names and ignore empty results
@@ -118,6 +129,7 @@ $(document).ready(function() {
 
 
         // Add track info to results
+        $('#playlist-result-name').text(searchTerm);
         $('#track' + wordIndex).empty();
         $('#track' + wordIndex).append(
           "<a href='" + trackLink + "'>" + "<img src='" + cover + "' alt='" + album + "'></a>" +

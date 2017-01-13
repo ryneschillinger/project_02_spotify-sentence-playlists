@@ -74,8 +74,6 @@ app.post('/playlists', isLoggedIn, function(req,res) {
   var tracksAddedToPlaylist = 0;
   var totalTracks = req.body.trackLink.length;
 
-
-
   db.playlists.findOrCreate({
     where: {name: req.body.playlistname},
     defaults: {
