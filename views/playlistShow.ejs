@@ -1,12 +1,19 @@
 <% include nav %>
 
 <style>
- 	body { 
-		background: linear-gradient(135deg,#1DB954,#0a7f92,#421469) no-repeat center center fixed; 
-		-webkit-background-size: cover;
-		-moz-background-size: cover;
-		-o-background-size: cover;
-		background-size: cover;
+ 	.background-image { 
+		background: url("<%= playlists.cover %>") no-repeat center center fixed; 
+		background-size: 100%;
+		background-position: center;
+		background-repeat: no-repeat;
+		z-index: -1;
+		filter: blur(100px) saturate(150%);
+		width: 100%;
+		height: 100%;
+		transform: scale(1.3);
+		position: absolute;
+		top: 0;
+		left: 0;
 	}
 </style>
 
@@ -15,29 +22,36 @@
 	<div class="playlists-details-header">
 		<h1>
 			<i class="fa fa-list-ul" aria-hidden="true"></i>
-			Playlist Name
+			<%= playlists.name %>
 		</h1>
 	</h1>
 
 	<div class="tracks">
-		<hr>
-		<div class="track">
-			<a href="https://open.spotify.com/track/0ENSn4fwAbCGeFGVUbXEU3"><img src="https://i.scdn.co/image/220fe5804f244f41aa216c4e3de17eafbf552341"></a>
-			<div class="track-details">
-			  <h4><a href="https://open.spotify.com/track/0ENSn4fwAbCGeFGVUbXEU3">Hello</a></h4>
-			  <p>Artist: <a href="https://open.spotify.com/artist/4dpARuHxo51G3z768sgnrY">Adele</a></p>
-			  <p>Album: <a href="https://open.spotify.com/album/1Eo1pg2D4beFgf3HFTJTMc">25</a></p>
-			</div>
-		</div>
-		<hr>
 
+		<% playlists.tracks.forEach(function(tracks, index) { %>
+			<hr>
+			<div class="track">
+				<a href="#"><img src="<%= tracks.cover %>"></a>
+				<div class="track-details">
+				  <h4><a href="#"><%= tracks.name %></a></h4>
+				  <p>Artist: <a href="#"><%= tracks.artist %></a></p>
+				  <p>Album: <a href="#"><%= tracks.album %></a></p>
+				</div>
+			</div>
+		<% }); %>
+
+<!-- 		<hr>
 		<div class="track">
 			<a href="https://open.spotify.com/track/6qwGBEapykrbAHTYlYwONN"><img src="https://i.scdn.co/image/1b1fda66071bd81463405ceeecf8e6b9528568b0"></a>
 			<div class="track-details">
 			  <h4><a href="https://open.spotify.com/track/6qwGBEapykrbAHTYlYwONN">Cole World</a></h4>
 			  <p>Artist: <a href="https://open.spotify.com/artist/6l3HvQ5sa6mXTsMTB19rO5">J. Cole</a></p>
-			  <p>Album: <a href="">Cole World: The Sideline Story</a></p>
+			  <p>Album: <a href=""><%= playlists.id %></a></p>
 			</div>
-		</div>
+		</div> -->
+
+
 	</div>
 </div>
+
+<div class="background-image"></div>

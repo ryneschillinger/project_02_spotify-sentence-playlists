@@ -57,9 +57,19 @@ app.get('/playlists', isLoggedIn, function(req, res) {
 
 // GET - Show playlist details
 app.get('/playlists/:id', function(req, res) {
-  db.playlists.findById(req.params.id).then(function(playlists) {
-    res.render("playlistShow", {playlists: playlists});
+  // db.playlists.findById(req.params.id).then(function(playlists) {
+  //   res.render("playlistShow", {playlists: playlists});
+  // });
+
+  db.playlists.find({
+    where: { id: req.params.id },
+    include: [db.tracks]
+  })
+  .then(function(playlists) {
+    res.render('playlistShow', {playlists: playlists});
   });
+
+
 });
 
 // DELETE - remove playlist from list of favorites

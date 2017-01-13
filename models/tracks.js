@@ -5,11 +5,11 @@ module.exports = function(sequelize, DataTypes) {
     artist: DataTypes.STRING,
     album: DataTypes.STRING,
     cover: DataTypes.STRING,
-    playlist_id: DataTypes.INTEGER
+    playlistId: DataTypes.INTEGER
   }, {
     classMethods: {
       associate: function(models) {
-        // associations can be defined here
+        models.tracks.belongsToMany(models.playlists, {through: "playlists_tracks"});
       }
     }
   });
