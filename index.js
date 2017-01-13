@@ -55,12 +55,46 @@ app.get('/playlists', isLoggedIn, function(req, res) {
   });
 });
 
+
+app.post('/playlists', isLoggedIn, function(req,res) {
+  console.log(req.body);
+
+  var tracksAddedToPlaylist = 0;
+  var totalTracks = req.body.trackLink.length;
+
+  db.playlists.findOrCreate({
+    where: {name: req.body.playlistname},
+    defaults: {
+      cover: req.body.cover[0],
+      userId: req.user.id
+    }
+  }).then(function(playlists) {
+    for (var i = 0; i < totalTracks; i++) {
+      db.tracks.findOrCreate({
+        where: { trackLink: req.body.trackLink[i] },
+        defaults: { 
+          name: req.body.name[i],
+          artist: req.body.artist[i],
+          album: req.body.album[i],
+          cover: req.body.cover[i],
+          playlistId: playlists.id,
+          artistLink: req.body.artistLink[i],
+          albumLink: req.body.albumLink[i] 
+        }
+      }).spread(function(track, created) {
+        playlists.addTrack(track).then(function(playlists) {
+          tracksAddedToPlaylist++;
+          if (tracksAddedToPlaylist === totalTracks) {
+            res.redirect('/playlists/' + playlists.id);
+          }
+        });
+      });
+    }
+  });
+});
+
 // GET - Show playlist details
 app.get('/playlists/:id', function(req, res) {
-  // db.playlists.findById(req.params.id).then(function(playlists) {
-  //   res.render("playlistShow", {playlists: playlists});
-  // });
-
   db.playlists.find({
     where: { id: req.params.id },
     include: [db.tracks]

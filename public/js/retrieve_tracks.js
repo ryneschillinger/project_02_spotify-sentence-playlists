@@ -9,7 +9,7 @@ $(document).ready(function() {
     maxLength = 15;
 
     // Remove previous search results and reset counts
-    $('#tracks').empty();
+    $('#results-tracks').empty();
     $('#error').empty();
     var resultJSON = '';
     var wordIndex = 0;
@@ -17,6 +17,9 @@ $(document).ready(function() {
 
     // Get submission and separate the words
     var searchTerm = $('#sentence').val();
+    var form = $("#add-playlist");
+    var html = '<input type="hidden" name="playlistname" value="' + searchTerm + '">';
+    form.append(html);
     searchTermSplit = searchTerm.split(" ");
 
 
@@ -30,6 +33,7 @@ $(document).ready(function() {
     // Change title of playlist in results
     $('#playlist-name').text(searchTerm);
 
+
     // For each word in submission, get track whose title matches that word
 
     function getTracks(arr) {
@@ -38,14 +42,16 @@ $(document).ready(function() {
         // Get track JSON for word
         resultJSON = 'https://api.spotify.com/v1/search?type=track&limit=50&q=' + encodeURIComponent('track:"' + arr[i] + '"');
 
-        $('#tracks').append(
+        console.log(i);
+        $('#results-tracks').append(
           "<div class='track' id='track" + i + "'></div>"
         );
 
-        addTrack(resultJSON, arr[wordIndex]);
+        addTrack(resultJSON, arr[i]);
 
       }
     }
+
 
     // Collect track info and append it to results list
 
@@ -103,6 +109,7 @@ $(document).ready(function() {
         var album = json.tracks.items[ran].album.name;
         var albumLink = json.tracks.items[ran].album.external_urls.spotify;
         var cover = json.tracks.items[ran].album.images[2].url;
+    
 
         // Change background image to match album cover
         if (word == searchTermSplit[0]) {
@@ -120,6 +127,18 @@ $(document).ready(function() {
             '<p>Album: ' + "<a href='" + albumLink + "'>" + album + '</a></p>' +
           '</div>'
         );
+
+        var form = $("#add-playlist");
+        
+        var html = '<input type="hidden" name="name" value="' + track + '">';
+        html += '<input type="hidden" name="trackLink" value="' + trackLink + '">';
+        html += '<input type="hidden" name="artistLink" value="' + artistLink + '">';
+        html += '<input type="hidden" name="artist" value="' + artist + '">';
+        html += '<input type="hidden" name="albumLink" value="' + albumLink + '">';
+        html += '<input type="hidden" name="album" value="' + album + '">';
+        html += '<input type="hidden" name="cover" value="' + cover + '">';
+
+        form.append(html);
 
         // Move on to the next word in results array
         wordIndex++;

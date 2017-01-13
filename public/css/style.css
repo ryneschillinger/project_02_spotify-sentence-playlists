@@ -24,15 +24,6 @@ body {
 	top: 0;
 }
 
-.main-container {
-	width: 960px;
-	max-width: 90%;
-	display: flex;
-	justify-content: center;
-	box-shadow: 0 .7em 9em rgba(0,0,0,.2);
-	margin: 10% 0;
-}
-
 .container {
 	padding: .2em 3em;
 	overflow: auto;
@@ -194,7 +185,7 @@ nav {
 	display: inline-block;
 	margin-left: 3em;
 	font-size: 1.3em;
-	font-weight: 500;
+	font-weight: 600;
 }
 
 #nav-links a:hover {
@@ -325,6 +316,16 @@ select {
 
 /*** SEARCH FORM STYLES ***/
 
+.main-container {
+	width: 960px;
+	max-width: 90%;
+	display: flex;
+	justify-content: center;
+	box-shadow: 0 .8em 5em rgba(0,0,0,.25);
+	margin: 10% 0;
+	border-radius: 1.5em;
+}
+
 #search-container {
 	width: 50%;
 	background-color: #F2F2ED;
@@ -342,13 +343,13 @@ select {
 textarea {
 	border: .1em solid #e3e8e0;
 	border-radius: .3em;
-	padding: .5em;
+	padding: 1em;
 	font-family: 'Raleway', sans-serif;
 	font-size: 1.5em;
 	font-weight: 500;
 	background-color: white;
-	width: 240%;
-	height: 11.6em;
+	width: 231%;
+	height: 10.6em;
 	margin-top: .2em;
 	margin-bottom: .5em;
 }
@@ -427,7 +428,7 @@ textarea:focus {
 	color: white;
 	width: 900px;
 	max-width: 90%;
-	box-shadow: 0 .7em 6em rgba(10,13,2,.55);
+	box-shadow: 0 .7em 5em rgba(10,13,25,.7);
 	border-top: .3em solid #333;
 	border-bottom: .3em solid black;
 	margin: 10% 0;
@@ -474,6 +475,7 @@ textarea:focus {
 
 .playlist-name {
 	text-transform: capitalize;
+	word-wrap: break-word;
 }
 
 .img-container {
@@ -530,7 +532,7 @@ textarea:focus {
 }
 
 .playlists-details-header {
-
+	text-transform: capitalize;
 }
 
 .playlists-details-header h1 {
@@ -538,6 +540,7 @@ textarea:focus {
 	text-align: left;
 	letter-spacing: 0.02em;
 	margin: .5em 0 .9em 0;
+	word-wrap: break-word;
 }
 
 .playlists-details-header i {

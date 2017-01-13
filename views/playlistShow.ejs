@@ -31,25 +31,14 @@
 		<% playlists.tracks.forEach(function(tracks, index) { %>
 			<hr>
 			<div class="track">
-				<a href="#"><img src="<%= tracks.cover %>"></a>
+				<a href="<%= tracks.trackLink %>"><img src="<%= tracks.cover %>"></a>
 				<div class="track-details">
-				  <h4><a href="#"><%= tracks.name %></a></h4>
-				  <p>Artist: <a href="#"><%= tracks.artist %></a></p>
-				  <p>Album: <a href="#"><%= tracks.album %></a></p>
+				  <h4><a href="<%= tracks.trackLink %>"><%= tracks.name %></a></h4>
+				  <p>Artist: <a href="<%= tracks.artistLink %>"><%= tracks.artist %></a></p>
+				  <p>Album: <a href="<%= tracks.albumLink %>"><%= tracks.album %></a></p>
 				</div>
 			</div>
 		<% }); %>
-
-<!-- 		<hr>
-		<div class="track">
-			<a href="https://open.spotify.com/track/6qwGBEapykrbAHTYlYwONN"><img src="https://i.scdn.co/image/1b1fda66071bd81463405ceeecf8e6b9528568b0"></a>
-			<div class="track-details">
-			  <h4><a href="https://open.spotify.com/track/6qwGBEapykrbAHTYlYwONN">Cole World</a></h4>
-			  <p>Artist: <a href="https://open.spotify.com/artist/6l3HvQ5sa6mXTsMTB19rO5">J. Cole</a></p>
-			  <p>Album: <a href=""><%= playlists.id %></a></p>
-			</div>
-		</div> -->
-
 
 	</div>
 </div>
