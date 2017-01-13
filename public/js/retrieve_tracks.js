@@ -59,7 +59,7 @@ $(document).ready(function() {
 
         // Return error if no match found
         if (!json.tracks.items[ran]) {
-          var errorMessage = "No match found for the word ''" + word + "''";
+          var errorMessage = "No match found for the word ''" + searchTermSplit[wordIndex] + "''";
           $("#error").text(errorMessage);
         }
 
@@ -109,8 +109,6 @@ $(document).ready(function() {
           $('.background-image').css({"background": "url('" + cover + "')", "background-size": "100%", "background-position": "center"});
         }
 
-        console.log(wordIndex);
-        console.log(searchTermSplit[wordIndex]);
 
         // Add track info to results
         $('#track' + wordIndex).empty();
