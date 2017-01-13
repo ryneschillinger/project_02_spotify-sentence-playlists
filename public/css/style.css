@@ -382,6 +382,11 @@ textarea:focus {
 	font-weight: 800;
 }
 
+.tracks {
+	width: 100%;
+	padding: 0;
+}
+
 .track {
 	width: 100%;
 	display: flex;
@@ -426,7 +431,7 @@ textarea:focus {
 	border-top: .3em solid #333;
 	border-bottom: .3em solid black;
 	margin: 10% 0;
-	padding: 1.5em 30px;
+	padding: 1.5em 3em;
 	border-radius: 3em;
 }
 
@@ -437,7 +442,7 @@ textarea:focus {
 	margin: .7em 0 .9em 0;
 }
 
-#your-playlists-header i {
+.your-playlists-header i {
 	margin-right: .2em;
 	color: #1DB954;
 }
@@ -505,4 +510,42 @@ textarea:focus {
 .delete-link:hover {
 	border: 2px solid #1DB954;
 	color: #1DB954;
+}
+
+
+/*** YOUR PLAYLISTS PAGE STYLES ***/
+
+.playlist-details {
+	background-color: #191419;
+	color: white;
+	width: 440px;
+	max-width: 90%;
+	box-shadow: 0 .7em 6em rgba(10,13,2,.55);
+	border-top: .3em solid #333;
+	border-bottom: .3em solid black;
+	margin: 10% 0;
+	padding: 1.5em 5em;
+	border-radius: 3em;
+
+}
+
+.playlists-details-header {
+
+}
+
+.playlists-details-header h1 {
+	font-size: 3.6em;
+	text-align: left;
+	letter-spacing: 0.02em;
+	margin: .5em 0 .9em 0;
+}
+
+.playlists-details-header i {
+	margin-right: .2em;
+	color: #555;
+}
+
+.playlist-details hr {
+	background-color: #32303a;
+	margin-bottom: 3em;
 }

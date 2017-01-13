@@ -55,13 +55,11 @@ app.get('/playlists', isLoggedIn, function(req, res) {
   });
 });
 
-// GET - Show playlist tracks
+// GET - Show playlist details
 app.get('/playlists/:id', function(req, res) {
-	// var pokemonDetails = "http://pokeapi.co/api/v2/pokemon/" + req.params.name;
-	// request(pokemonDetails, function(error, response, body) {
-	// 	var name = JSON.parse(body).name;
-	// 	res.render('pokemon-detail', {name:name, stats:stats, sprite:sprite, height:height, weight:weight, abilities:abilities, types:types,});
-	res.send("holla");
+  db.playlists.findById(req.params.id).then(function(playlists) {
+    res.render("playlistShow", {playlists: playlists});
+  });
 });
 
 // DELETE - remove playlist from list of favorites
