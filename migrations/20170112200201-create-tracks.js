@@ -20,7 +20,7 @@ module.exports = {
       cover: {
         type: Sequelize.STRING
       },
-      playlist_id: {
+      playlistId: {
         type: Sequelize.INTEGER
       },
       createdAt: {
