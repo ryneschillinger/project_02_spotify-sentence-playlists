@@ -128,6 +128,7 @@ $(document).ready(function() {
           '</div>'
         );
 
+        // Create hidden form for 
         var form = $("#add-playlist");
         
         var html = '<input type="hidden" name="name" value="' + track + '">';

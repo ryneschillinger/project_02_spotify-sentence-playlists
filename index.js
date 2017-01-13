@@ -55,12 +55,26 @@ app.get('/playlists', isLoggedIn, function(req, res) {
   });
 });
 
-
+// POST - Add new playlist
 app.post('/playlists', isLoggedIn, function(req,res) {
   console.log(req.body);
 
+  console.log("IS ARRAY?", Array.isArray(req.body.trackLink), req.body.trackLink);
+  
+  if (!Array.isArray(req.body.trackLink)) {
+    req.body.trackLink = [req.body.trackLink];
+    req.body.name = [req.body.name];
+    req.body.artist = [req.body.artist];
+    req.body.artistLink = [req.body.artistLink];
+    req.body.album = [req.body.album];
+    req.body.albumLink = [req.body.albumLink];
+    req.body.cover = [req.body.cover];
+  }
+
   var tracksAddedToPlaylist = 0;
   var totalTracks = req.body.trackLink.length;
+
+
 
   db.playlists.findOrCreate({
     where: {name: req.body.playlistname},
@@ -68,7 +82,7 @@ app.post('/playlists', isLoggedIn, function(req,res) {
       cover: req.body.cover[0],
       userId: req.user.id
     }
-  }).then(function(playlists) {
+  }).spread(function(playlists, created) {
     for (var i = 0; i < totalTracks; i++) {
       db.tracks.findOrCreate({
         where: { trackLink: req.body.trackLink[i] },
@@ -82,7 +96,16 @@ app.post('/playlists', isLoggedIn, function(req,res) {
           albumLink: req.body.albumLink[i] 
         }
       }).spread(function(track, created) {
+        console.log("ADD TRACK")
         playlists.addTrack(track).then(function(playlists) {
+          tracksAddedToPlaylist++;
+          if (tracksAddedToPlaylist === totalTracks) {
+            res.redirect('/playlists/' + playlists.id);
+          }
+        });
+
+        console.log("ADD TRACKS")
+        playlists.addTracks(track).then(function(playlists) {
           tracksAddedToPlaylist++;
           if (tracksAddedToPlaylist === totalTracks) {
             res.redirect('/playlists/' + playlists.id);

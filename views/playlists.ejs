@@ -20,23 +20,23 @@
 
 		<% playlists.forEach(function(playlist) { %>
 
-		<div class="playlist-container" id="<%= playlist.id %>">
-			<a href="playlists/<%= playlist.id %>">
-				<div class="img-container">
-					<img src="/img/list.svg" class="playlist-icon" alt="playlist">
-					<img src="<%= playlist.cover %>" class="playlist-cover">
-				</div>
-			</a>
-			<h4 class="playlist-name">
-				<%= playlist.name %>
-			</h4>
-			<button class="btn delete-link">
-				<i class="fa fa-times" aria-hidden="true"></i> 
-				Remove
-			</button>  
-		</div>
+			<div class="playlist-container" id="<%= playlist.id %>">
+				<a href="playlists/<%= playlist.id %>">
+					<div class="img-container">
+						<img src="/img/list.svg" class="playlist-icon" alt="playlist">
+						<img src="<%= playlist.cover %>" class="playlist-cover">
+					</div>
+				</a>
+				<h4 class="playlist-name">
+					<%= playlist.name %>
+				</h4>
+				<button class="btn delete-link">
+					<i class="fa fa-times" aria-hidden="true"></i> 
+					Remove
+				</button>  
+			</div>
 
-	<% }); %>
+		<% }); %>
 
 	</div>
 </div>
