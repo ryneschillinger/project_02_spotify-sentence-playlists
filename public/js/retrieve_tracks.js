@@ -1,5 +1,7 @@
 $(document).ready(function() {
 
+  console.log("hollatchaboy");
+
   $('#search-form').submit(function(event) {
     event.preventDefault();
 

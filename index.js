@@ -10,7 +10,6 @@ var isLoggedIn = require('./middleware/isLoggedIn');
 
 // APP VARIABLES
 var db = require('./models'); 
-var partials = require('express-partials')
 var app = express();
 
 // SET/USE STATEMENTS
@@ -18,7 +17,6 @@ app.set('view engine', 'ejs');
 app.use(require('morgan')('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(ejsLayouts);
-app.use(partials());
 app.use(express.static('public'));
 app.use(express.static('files'));
 

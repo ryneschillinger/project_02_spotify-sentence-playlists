@@ -123,7 +123,7 @@ hr {
 	background-color: #1DB954;
 	border-top: .05em solid #65eb95;
 	border-bottom: .05em solid #059136;
-	box-shadow: 0 .05em .2em #666;
+	box-shadow: 0 .05em .2em rgba(0,0,0,.7);
 	padding: .8em 1.1em .8em 1.1em;
 	margin: 1.7em 0 2em 0;
 	color: white;
@@ -140,7 +140,7 @@ hr {
 	background-color: #F2F2ED;
 	border-top: .05em solid white;
 	border-bottom: .05em solid #D5D5D1;
-	box-shadow: 0 .04em .35em #bbb;
+	box-shadow: 0 .04em .35em rgba(0,0,0,.3);
 	color: #191419;
 	transition-property: background-color, box-shadow;
 	transition-duration: 200ms;
@@ -149,6 +149,11 @@ hr {
 .btn-secondary:hover {
 	background-color: #e8ebe2;
 	box-shadow: 0 .04em .35em #9b9a9a;
+}
+
+.form-header .phraselist-logo {
+	max-width: 300px;
+	margin-top: .2em;
 }
 
 
@@ -168,6 +173,11 @@ nav {
 
 #site-logo {
 	margin: 0 2.5%;
+}
+
+#site-logo .phraselist-logo {
+	max-width: 200px;
+	margin: 2.5em 0;
 }
 
 #nav-links {
