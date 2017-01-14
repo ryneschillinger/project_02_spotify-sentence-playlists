@@ -18,10 +18,11 @@ $(document).ready(function() {
     // Clear any old submissions, get submission and separate the words into array
     var searchTerm = "";
     searchTerm = $('#sentence').val();
+    var searchTermSplit = "";
+    searchTermSplit = searchTerm.split(" ");
     var form = $("#add-playlist");
     var html = '<input type="hidden" name="playlistname" value="' + searchTerm + '">';
     form.append(html);
-    searchTermSplit = searchTerm.split(" ");
 
 
     // Remove empty spaces from sentence array
