@@ -50,9 +50,17 @@ app.get('/create', isLoggedIn, function(req, res) {
 
 // GET - Show list of all favorited playlists
 app.get('/playlists', isLoggedIn, function(req, res) {
-  db.playlists.findAll().then(function(playlists) {
-  	res.render("playlists", {playlists: playlists});
-  });
+  // db.playlists.findAll().then(function(playlists) {
+  // 	res.render("playlists", {playlists: playlists});
+  // });
+
+    db.playlists.findAll({
+      where: { userId: req.user.id },
+    }).then(function(playlists){
+      // authors will have a .posts key with an array of posts
+      res.render("playlists", {playlists: playlists});
+    });
+
 });
 
 // POST - Add new playlist
