@@ -142,11 +142,16 @@ $(document).ready(function() {
         $('#playlist-result-name').text(searchTerm);
         $('#track' + wordIndex).empty();
         $('#track' + wordIndex).append(
-          "<a href='" + trackLink + "'>" + "<img src='" + cover + "' alt='" + album + "'></a>" +
+          "<div class='cover-thumb'>" +
+            "<a href='" + trackLink + "' target='_blank'>" + 
+            "<i class='fa fa-play-circle' aria-hidden='true'></i>" + 
+            "<div class='play-button-fill'></div>" +
+            "<img src='" + cover + "' alt='" + album + "'></a>" +
+          "</div>" +
           "<div class='track-details'>" +
-            "<h4><a href='" + trackLink + "'>" + track + '</a></h4>' +
-            '<p>Artist: ' + "<a href='" + artistLink + "'>" + artist + '</a></p>' +
-            '<p>Album: ' + "<a href='" + albumLink + "'>" + album + '</a></p>' +
+            "<h4><a href='" + trackLink + "' target='_blank'>" + track + '</a></h4>' +
+            '<p>Artist: ' + "<a href='" + artistLink + "' target='_blank'>" + artist + '</a></p>' +
+            '<p>Album: ' + "<a href='" + albumLink + "' target='_blank'>" + album + '</a></p>' +
           '</div>'
         );
 

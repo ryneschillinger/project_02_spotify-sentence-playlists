@@ -31,7 +31,13 @@
 		<% playlists.tracks.forEach(function(tracks, index) { %>
 			<hr>
 			<div class="track">
-				<a href="<%= tracks.trackLink %>"><img src="<%= tracks.cover %>"></a>
+				<div class="cover-thumb">
+					<a href="https://open.spotify.com/track/0ENSn4fwAbCGeFGVUbXEU3" target="_blank">
+					<i class="fa fa-play-circle" aria-hidden="true"></i>
+					<div class="play-button-fill"></div>
+					<img src="<%= tracks.cover %>">
+					</a>
+				</div>
 				<div class="track-details">
 				  <h4><a href="<%= tracks.trackLink %>"><%= tracks.name %></a></h4>
 				  <p>Artist: <a href="<%= tracks.artistLink %>"><%= tracks.artist %></a></p>
