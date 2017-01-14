@@ -23,6 +23,15 @@ module.exports = {
       playlistId: {
         type: Sequelize.INTEGER
       },
+      trackLink: {
+        type: Sequelize.STRING
+      },
+      artistLink: {
+        type: Sequelize.STRING
+      },
+      albumLink: {
+        type: Sequelize.STRING
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
