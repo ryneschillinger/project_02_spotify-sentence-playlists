@@ -71,6 +71,8 @@ a {
 	color: #07ab41;
 	transition-property: color;
 	transition-duration: 200ms;
+	word-break: break-all;
+	word-break: break-word;
 }
 
 a:hover {
@@ -413,11 +415,13 @@ textarea:focus {
 }
 
 #error {
-	margin: -1.3em 0 0 0;
+	margin: -.2em 0 .4em 0;
+	visibility: hidden;
 }
 
 #btn-add-playlist {
 	margin: 1.6em 0 2.5em 0;
+	visibility: hidden;
 }
 
 

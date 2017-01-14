@@ -42,7 +42,6 @@ $(document).ready(function() {
         // Get track JSON for word
         resultJSON = 'https://api.spotify.com/v1/search?type=track&limit=50&q=' + encodeURIComponent('track:"' + arr[i] + '"');
 
-        console.log(i);
         $('#results-tracks').append(
           "<div class='track' id='track" + i + "'></div>"
         );
@@ -63,29 +62,45 @@ $(document).ready(function() {
         var allResults = [];
         var ran = Math.floor(Math.random()*numResults);
 
-        // Return error if no match found
+        // ERROR IF NO MATCH FOUND
         if (!json.tracks.items[ran]) {
-          var errorMessage = "No match found for the word ''" + searchTermSplit[wordIndex] + "''";
+
+          //Display error message
+          var errorMessage = "No match found for the word ''" + word + "''";
+          $("#error").css("visibility", "visible");
           $("#error").text(errorMessage);
 
-          //Remove item from results array
-          searchTermSplit.splice(wordIndex,1);
+          // Remove item from results array and revise playlist name
+          var wordToRemove = searchTermSplit.indexOf(word);
+          searchTermSplit.splice(wordToRemove,1);
           searchTerm = searchTermSplit.join(" ");
-          console.log(searchTerm);
+
+          // Delete container div for matchless word
+          $('#track' + wordIndex).remove();
 
           // Change results header
           $('#playlist-result-name').text(searchTerm);
 
           // Change playlistname value to new searchTerm
           html = '<input type="hidden" name="playlistname" value="' + searchTerm + '">';
+
+          // Skip ahead to next word in results array
+          wordIndex++;
         }
+
+        // Get track details from JSON
+        var track = json.tracks.items[ran].name;
+        var trackLink = json.tracks.items[ran].external_urls.spotify;
+        var artist = json.tracks.items[ran].artists[0].name;
+        var artistLink = json.tracks.items[ran].artists[0].external_urls.spotify;
+        var album = json.tracks.items[ran].album.name;
+        var albumLink = json.tracks.items[ran].album.external_urls.spotify;
+        var cover = json.tracks.items[ran].album.images[2].url;
 
         // Return only short track names and ignore empty results
         for (var i = 0; i < numResults; i++) {
           allResults.push(json.tracks.items[i].name);
         }
-
-        var track = json.tracks.items[ran].name;
 
         while (track.length > maxLength) {
           // Ignore empty results
@@ -113,13 +128,6 @@ $(document).ready(function() {
             track = json.tracks.items[ran].name;
           }
         }
-
-        var trackLink = json.tracks.items[ran].external_urls.spotify;
-        var artist = json.tracks.items[ran].artists[0].name;
-        var artistLink = json.tracks.items[ran].artists[0].external_urls.spotify;
-        var album = json.tracks.items[ran].album.name;
-        var albumLink = json.tracks.items[ran].album.external_urls.spotify;
-        var cover = json.tracks.items[ran].album.images[2].url;
     
 
         // Change background image to match album cover
@@ -162,6 +170,10 @@ $(document).ready(function() {
 
     // Call main function using the sentence array
     getTracks(searchTermSplit);
+    
+
+    //Display Add Playlist Button
+    $("#btn-add-playlist").css("visibility", "visible");
 
   });
 
