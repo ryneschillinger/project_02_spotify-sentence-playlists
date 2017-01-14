@@ -15,8 +15,9 @@ $(document).ready(function() {
     var wordIndex = 0;
 
 
-    // Get submission and separate the words
-    var searchTerm = $('#sentence').val();
+    // Clear any old submissions, get submission and separate the words into array
+    var searchTerm = "";
+    searchTerm = $('#sentence').val();
     var form = $("#add-playlist");
     var html = '<input type="hidden" name="playlistname" value="' + searchTerm + '">';
     form.append(html);
@@ -170,7 +171,7 @@ $(document).ready(function() {
 
     // Call main function using the sentence array
     getTracks(searchTermSplit);
-    
+
 
     //Display Add Playlist Button
     $("#btn-add-playlist").css("visibility", "visible");

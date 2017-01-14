@@ -10,20 +10,6 @@ body {
 	overflow-y: scroll;
 }
 
-.background-image {
-	background: url("/img/716943b243e865ecd71daee6ea470c5dcbe5dd78.jpeg");
-	background-size: 100%;
-	background-position: center;
-	background-repeat: no-repeat;
-	z-index: -1;
-	filter: blur(100px) saturate(150%);
-	width: 100%;
-	height: 100%;
-	transform: scale(1.3);
-	position: absolute;
-	top: 0;
-}
-
 .container {
 	padding: .2em 3em;
 	overflow: auto;
@@ -316,7 +302,7 @@ select {
 }
 
 
-/*** SEARCH FORM STYLES ***/
+/*** /CREATE PAGE STYLES ***/
 
 .main-container {
 	width: 960px;
@@ -326,6 +312,20 @@ select {
 	box-shadow: 0 .8em 5em rgba(0,0,0,.25);
 	margin: 10% 0;
 	border-radius: 1.5em;
+}
+
+.background-image {
+	background: url("/img/716943b243e865ecd71daee6ea470c5dcbe5dd78.jpeg");
+	background-size: 100%;
+	background-position: center;
+	background-repeat: no-repeat;
+	z-index: -1;
+	filter: blur(100px) saturate(150%);
+	width: 100%;
+	height: 100%;
+	transform: scale(1.3);
+	position: absolute;
+	top: 0;
 }
 
 #search-container {
@@ -359,9 +359,6 @@ textarea {
 textarea:focus {
 	outline: 1px solid #1DB954;
 }
-
-
-/*** PLAYLIST SEARCH RESULTS STYLES ***/
 
 #search-results {
 	width: 50%;
@@ -425,7 +422,7 @@ textarea:focus {
 }
 
 
-/*** YOUR PLAYLISTS PAGE STYLES ***/
+/*** /PLAYLISTS PAGE STYLES ***/
 
 .your-playlists {
 	background-color: #191419;
@@ -519,7 +516,7 @@ textarea:focus {
 }
 
 
-/*** YOUR PLAYLISTS PAGE STYLES ***/
+/*** PLAYLIST DETAILS PAGE STYLES ***/
 
 .playlist-details {
 	background-color: #191419;
@@ -532,7 +529,6 @@ textarea:focus {
 	margin: 10% 0;
 	padding: 1.5em 5em;
 	border-radius: 3em;
-
 }
 
 .playlists-details-header {
