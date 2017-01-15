@@ -635,7 +635,5 @@ i.fa-play-circle {
 /*** MEDIA QUERIES ***/
 
 @media screen and (max-width: 480px) {
-    body {
-        font-size: medium;
-    }
+
 }
