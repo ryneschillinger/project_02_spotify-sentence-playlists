@@ -12,7 +12,6 @@ $(document).ready(function() {
     $('#results-tracks').empty();
     $('#error').empty();
     var resultJSON = '';
-    var wordIndex = 0;
 
 
     // Clear any old submissions, get submission and separate the words into array
@@ -39,16 +38,15 @@ $(document).ready(function() {
     // For each word in submission, get track whose title matches that word
 
     function getTracks(arr) {
-      for (var i=wordIndex; i<arr.length; i++) {
+      for (var i=0; i<arr.length; i++) {
 
-        // Get track JSON for word
-        resultJSON = 'https://api.spotify.com/v1/search?type=track&limit=50&q=' + encodeURIComponent('track:"' + arr[i] + '"');
-
+        // Create container for track
         $('#results-tracks').append(
           "<div class='track' id='track" + i + "'></div>"
         );
 
-        addTrack(resultJSON, arr[i]);
+        console.log("current word: " + arr[i]);
+        addTrack(arr[i], i);
 
       }
     }
@@ -56,9 +54,11 @@ $(document).ready(function() {
 
     // Collect track info and append it to results list
 
-    function addTrack(url, word) {
+    function addTrack(word, index) {
 
-      $.getJSON(url, function(json) {
+      JSONurl = 'https://api.spotify.com/v1/search?type=track&limit=50&q=' + encodeURIComponent('track:"' + word + '"');
+
+      $.getJSON(JSONurl, function(json) {
 
         var numResults = json.tracks.items.length;
         var allResults = [];
@@ -78,7 +78,7 @@ $(document).ready(function() {
           searchTerm = searchTermSplit.join(" ");
 
           // Delete container div for matchless word
-          $('#track' + wordIndex).remove();
+          $('#track' + index).remove();
 
           // Change results header
           $('#playlist-result-name').text(searchTerm);
@@ -140,8 +140,8 @@ $(document).ready(function() {
 
         // Add track info to results
         $('#playlist-result-name').text(searchTerm);
-        $('#track' + wordIndex).empty();
-        $('#track' + wordIndex).append(
+        $('#track' + index).empty();
+        $('#track' + index).append(
           "<div class='cover-thumb'>" +
             "<a href='" + trackLink + "' target='_blank'>" + 
             "<i class='fa fa-play-circle' aria-hidden='true'></i>" + 
@@ -155,7 +155,7 @@ $(document).ready(function() {
           '</div>'
         );
 
-        // Create hidden form for 
+        // Create hidden form for database
         var form = $("#add-playlist");
         
         var html = '<input type="hidden" name="name" value="' + track + '">';
@@ -167,9 +167,6 @@ $(document).ready(function() {
         html += '<input type="hidden" name="cover" value="' + cover + '">';
 
         form.append(html);
-
-        // Move on to the next word in results array
-        wordIndex++;
 
       });
     } // End of addTrack function

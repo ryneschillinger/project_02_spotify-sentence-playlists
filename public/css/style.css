@@ -593,15 +593,15 @@ textarea:focus {
 
 .cover-thumb {
 	position: relative;
-}
-
-.cover-thumb img {
-	border: 1px solid #e3e8e0;
 	transition-property: filter;
 	transition-duration: 200ms;
 }
 
-.cover-thumb img:hover {
+.cover-thumb img {
+	border: 1px solid #e3e8e0;
+}
+
+.cover-thumb:hover {
 	filter: brightness(115%);
 }
 
@@ -610,7 +610,7 @@ i.fa-play-circle {
 	color: white;
 	top: 28%;
 	left: 29%;
-	box-shadow: 0 .07em .3em rgba(0,0,0,.6);
+	box-shadow: 0 .06em .2em rgba(0,0,0,.6);
 	border-radius: 50%;
 	margin: 0;
 	padding: 0;
