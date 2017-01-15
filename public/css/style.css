@@ -83,7 +83,7 @@ hr {
 
 .uppercase {
 	text-transform: uppercase;
-	letter-spacing: .3em;
+	letter-spacing: .25em;
 }
 
 .btn {
@@ -597,12 +597,12 @@ textarea:focus {
 	transition-duration: 200ms;
 }
 
-.cover-thumb img {
-	border: 1px solid #e3e8e0;
-}
-
 .cover-thumb:hover {
 	filter: brightness(115%);
+}
+
+.cover-thumb img {
+	border: 1px solid #e3e8e0;
 }
 
 i.fa-play-circle {
