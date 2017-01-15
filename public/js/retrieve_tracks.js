@@ -19,8 +19,11 @@ $(document).ready(function() {
     searchTerm = $('#sentence').val();
     var searchTermSplit = "";
     searchTermSplit = searchTerm.split(" ");
+
+    // Clear data form
+    $("#add-playlist-submit").nextAll().remove();
     var form = $("#add-playlist");
-    var html = '<input type="hidden" name="playlistname" value="' + searchTerm + '">';
+    var html = "<input type='hidden' name='playlistname' class='data-form' value='" + searchTerm + "'>";
     form.append(html);
 
 
@@ -45,7 +48,6 @@ $(document).ready(function() {
           "<div class='track' id='track" + i + "'></div>"
         );
 
-        console.log("current word: " + arr[i]);
         addTrack(arr[i], i);
 
       }
@@ -83,11 +85,8 @@ $(document).ready(function() {
           // Change results header
           $('#playlist-result-name').text(searchTerm);
 
-          // Change playlistname value to new searchTerm
-          html = '<input type="hidden" name="playlistname" value="' + searchTerm + '">';
-
-          // Skip ahead to next word in results array
-          wordIndex++;
+          // Change playlistname value to revised searchTerm
+          $(".data-form").attr("value", searchTerm);
         }
 
         // Get track details from JSON
@@ -155,21 +154,18 @@ $(document).ready(function() {
           '</div>'
         );
 
-        // Create hidden form for database
-        var form = $("#add-playlist");
-        
-        var html = '<input type="hidden" name="name" value="' + track + '">';
+        // Add data to form
+        html = '<input type="hidden" name="name" value="' + track + '">';
         html += '<input type="hidden" name="trackLink" value="' + trackLink + '">';
         html += '<input type="hidden" name="artistLink" value="' + artistLink + '">';
         html += '<input type="hidden" name="artist" value="' + artist + '">';
         html += '<input type="hidden" name="albumLink" value="' + albumLink + '">';
         html += '<input type="hidden" name="album" value="' + album + '">';
         html += '<input type="hidden" name="cover" value="' + cover + '">';
-
         form.append(html);
 
       });
-    } // End of addTrack function
+    } 
 
 
     // Call main function using the sentence array
@@ -178,6 +174,7 @@ $(document).ready(function() {
 
     //Display Add Playlist Button
     $("#btn-add-playlist").css("visibility", "visible");
+
 
   });
 
