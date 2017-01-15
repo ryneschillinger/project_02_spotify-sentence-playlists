@@ -76,26 +76,22 @@ app.post('/playlists', isLoggedIn, function(req,res) {
   var tracksAddedToPlaylist = 0;
   var totalTracks = req.body.trackLink.length;
 
-  db.playlists.findOrCreate({
-    where: {name: req.body.playlistname},
-    defaults: {
-      cover: req.body.cover[0],
-      userId: req.user.id
-    }
-  }).spread(function(playlists, created) {
+  db.playlists.create({
+    name: req.body.playlistname,
+    cover: req.body.cover[0],
+    userId: req.user.id
+  }).then(function(playlists, created) {
     for (var i = 0; i < totalTracks; i++) {
-      db.tracks.findOrCreate({
-        where: { trackLink: req.body.trackLink[i] },
-        defaults: { 
-          name: req.body.name[i],
-          artist: req.body.artist[i],
-          album: req.body.album[i],
-          cover: req.body.cover[i],
-          playlistId: playlists.id,
-          artistLink: req.body.artistLink[i],
-          albumLink: req.body.albumLink[i] 
-        }
-      }).spread(function(track, created) {
+      db.tracks.create({
+        name: req.body.name[i],
+        artist: req.body.artist[i],
+        album: req.body.album[i],
+        cover: req.body.cover[i],
+        playlistId: playlists.id,
+        trackLink: req.body.trackLink[i],
+        artistLink: req.body.artistLink[i],
+        albumLink: req.body.albumLink[i] 
+      }).then(function(track, created) {
         console.log("ADD TRACK")
         playlists.addTrack(track).then(function(playlists) {
           tracksAddedToPlaylist++;

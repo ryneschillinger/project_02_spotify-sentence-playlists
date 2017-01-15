@@ -630,3 +630,12 @@ i.fa-play-circle {
 	height: 25%;
 	z-index: 3;
 }
+
+
+/*** MEDIA QUERIES ***/
+
+@media screen and (max-width: 480px) {
+    body {
+        font-size: medium;
+    }
+}
